@@ -1,6 +1,6 @@
 <?php
 /**
- * API - 自定义协议 - PhpSerialize
+ * API - 自定义协议 - CBNSQ
  * Created by Lane
  * User: lane
  * Date: 2018/9/29
@@ -12,7 +12,7 @@ namespace MeepoPS\Api;
 
 use MeepoPS\Core\MeepoPS;
 
-class PhpSerialize extends MeepoPS
+class CBNSQ extends MeepoPS
 {
 
     /**
@@ -25,7 +25,7 @@ class PhpSerialize extends MeepoPS
         if (!$host || !$port) {
             return;
         }
-        parent::__construct('PhpSerialize', $host, $port, $contextOptionList);
+        parent::__construct('CBNSQ', $host, $port, $contextOptionList);
     }
 
     /**

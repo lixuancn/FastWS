@@ -12,7 +12,7 @@ namespace MeepoPS\Core\ApplicationProtocol;
 
 use MeepoPS\Core\TransportProtocol\TransportProtocolInterface;
 
-class PhpSerialize implements ApplicationProtocolInterface
+class CBNSQ implements ApplicationProtocolInterface
 {
 
     //基础头长: 8为正文长度
@@ -70,7 +70,6 @@ class PhpSerialize implements ApplicationProtocolInterface
     public static function decode($data, TransportProtocolInterface $connect)
     {
         $data = substr($data, self::BASE_HEADER_LENGTH + 1);
-        $data = unserialize($data);
         return $data;
     }
 }
