@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义协议: 从TCP数据流中解析PHP序列化数据。格式为：8位的数据正文的长度 + \t + 数据正文
+ * 自定义协议: 从TCP数据流中解析PHP序列化数据。格式为：8位的数据正文的长度 + messageID + 数据正文
  * Created by Lane.
  * User: lane
  * Date: 2018/9/29
@@ -18,6 +18,9 @@ class CBNSQ implements ApplicationProtocolInterface
     //基础头长: 8为正文长度
     //单位：位
     const BASE_HEADER_LENGTH = 8;
+    //消息id的长度, NSQ生成的
+    const MESSAGE_ID_LENGTH = 16;
+
     /**
      * 检测数据, 返回数据包的长度.
      * 没有数据包或者数据包未结束,则返回0
@@ -31,19 +34,14 @@ class CBNSQ implements ApplicationProtocolInterface
         //数据长度
         $dataLength = strlen($data);
         //头部未完 (当前帧未完)
-        if($dataLength < self::BASE_HEADER_LENGTH + 1){
+        if($dataLength < self::BASE_HEADER_LENGTH){
             return 0;
-        }
-        //协议错误，断开连接
-        if($data[self::BASE_HEADER_LENGTH] != "\t"){
-            $connect->close();
-            return -1;
         }
         //数据正文长度转int
         $contentLength = substr($data, 0, self::BASE_HEADER_LENGTH);
         $contentLength = intval($contentLength);
-        //加上头和\t
-        $len = self::BASE_HEADER_LENGTH + 1 + $contentLength;
+        //加上头和消息id
+        $len = self::BASE_HEADER_LENGTH + self::MESSAGE_ID_LENGTH + $contentLength;
         return $len;
     }
 
