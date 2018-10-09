@@ -181,7 +181,7 @@ class MeepoPS
         //添加统计数据
         self::$_statistics['start_time'] = date('Y-m-d H:i:s');
         //给主进程起个名字
-        Func::setProcessTitle('MeepoPS_Master_Process');
+        Func::setProcessTitle('meepops_master_process');
         //设置ID
         foreach (self::$_instanceList as $instanceId => $instance) {
             self::$_instancePidList[$instanceId] = array_fill(0, $instance->childProcessCount, 0);
@@ -353,7 +353,7 @@ class MeepoPS
             self::$_instancePidList = array();
             self::$_instanceList = array($instance->_instanceId => $instance);
             Timer::delAll();
-            Func::setProcessTitle('MeepoPS: instance process  ' . $instance->instanceName . ' ' . $instance->_getBind());
+            Func::setProcessTitle('meepops: instance process  ' . $instance->instanceName . ' ' . $instance->_getBind());
             $instance->id = $id;
             $instance->run();
             exit(250);
