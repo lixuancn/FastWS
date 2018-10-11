@@ -613,13 +613,13 @@ class MeepoPS
             //如果是子进程
         } else {
             foreach (self::$_instanceList as $instance) {
-                $instance->_stop();
+                $instance->stop();
             }
             exit();
         }
     }
 
-    private function _stop()
+    public function stop()
     {
         //执行关闭实例的时候的回调
         if ($this->callbackInstanceStop) {
