@@ -21,6 +21,8 @@ class Timer
     private static $_event = null;
     //任务列表
     private static $_taskList = array();
+    //待删除的任务列表
+    private static $_waitDelList = array();
     //任务ID
     private static $_id = 1;
 
@@ -42,7 +44,7 @@ class Timer
      * @param $isAlways bool|true 是否一直执行,默认为true. 一次性任务请传入false
      * @return int|false
      */
-    public static function add($callback, array $args, $intervalSecond, $isAlways = true)
+    public static function add($callback, array $args, $intervalSecond, $isAlways = true, $timerId = null)
     {
         if ($intervalSecond <= 0 || !is_callable($callback)) {
             return false;
@@ -52,7 +54,9 @@ class Timer
         } else {
             pcntl_alarm(1);
             $startTime = time() + $intervalSecond;
-            $timerId = self::$_id++;
+            if(is_null($timerId)) {
+                $timerId = self::$_id++;
+            }
             self::$_taskList[$timerId] = array($callback, $args, $startTime, $intervalSecond, $isAlways);
             return $timerId;
         }
@@ -67,6 +71,7 @@ class Timer
         if (!is_null(self::$_event)) {
             self::$_event->delOne($timerId, EventInterface::EVENT_TYPE_TIMER);
         } else {
+            self::$_waitDelList[$timerId] = null;
             unset(self::$_taskList[$timerId]);
         }
     }
@@ -77,6 +82,7 @@ class Timer
     public static function delAll()
     {
         self::$_taskList = array();
+        self::$_waitDelList = array();
         pcntl_alarm(0);
         if (!is_null(self::$_event)) {
             self::$_event->delAllTimer();
@@ -103,13 +109,19 @@ class Timer
     {
         $nowTime = time();
         foreach (self::$_taskList as $timerId => $task) {
+            //检测是否即将删除
+            if(isset(self::$_waitDelList[$timerId])){
+                unset(self::$_taskList[$timerId]);
+                unset(self::$_waitDelList[$timerId]);
+                continue;
+            }
             //当前时间小于启动时间,则不启动该时间段任务
             if ($nowTime < $task[2]) {
                 continue;
             }
-            //如果是持续性定时器任务,则添加到下次执行的队伍中
+            //如果是持续性定时器任务,则覆盖任务队列中本次任务xinxi
             if ($task[4]) {
-                self::add($task[0], $task[1], $task[3], $task[4]);
+                self::add($task[0], $task[1], $task[3], $task[4], $timerId);
             }
             //执行回调函数
             try {
@@ -117,8 +129,10 @@ class Timer
             } catch (\Exception $e) {
                 Log::write('MeepoPS: execution callback function timer execute-' . $task[0] . ' throw exception' . json_encode($e), 'ERROR');
             }
-            //删除本次已经执行的任务
-            unset(self::$_taskList[$timerId]);
+            //一次性定时器任务，删除本次已经执行的任务
+            if (!$task[4]) {
+                unset(self::$_taskList[$timerId]);
+            }
         }
     }
 }
