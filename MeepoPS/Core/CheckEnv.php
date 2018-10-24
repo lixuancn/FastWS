@@ -42,20 +42,19 @@ global $argv;
 if (!isset($argv[1]) || !in_array($argv[1], array('start', 'stop', 'restart', 'status', 'kill'))) {
     $fatalErrorList[] = "Fatal error: MeepoPS needs to receive the execution of the operation.\nUsage: php index.php start|stop|restart|status|kill\n\"";
 }
-
 //日志路径是否已经配置
-if (!defined('MEEPO_PS_LOG_PATH')) {
-    $fatalErrorList[] = "Fatal error: Log file path is not defined. Please define MEEPO_PS_LOG_PATH in Config.php";
+if (!defined('MEEPO_PS_LOG_PATH_PREFIX')) {
+    $fatalErrorList[] = "Fatal error: Log file path prefix is not defined. Please define MEEPO_PS_LOG_PATH_PREFIX in Config.php";
 } else {
     //日志目录是否存在
-    if (!file_exists(dirname(MEEPO_PS_LOG_PATH))) {
-        if (@!mkdir(dirname(MEEPO_PS_LOG_PATH), 0777, true)) {
-            $fatalErrorList[] = "Fatal error: Log file directory creation failed: " . dirname(MEEPO_PS_LOG_PATH);
+    if (!file_exists(dirname(MEEPO_PS_LOG_PATH_PREFIX))) {
+        if (@!mkdir(dirname(MEEPO_PS_LOG_PATH_PREFIX), 0777, true)) {
+            $fatalErrorList[] = "Fatal error: Log file directory creation failed: " . dirname(MEEPO_PS_LOG_PATH_PREFIX);
         }
     }
     //日志目录是否可写
-    if (!is_writable(dirname(MEEPO_PS_LOG_PATH))) {
-        $fatalErrorList[] = "Fatal error: Log file path not to be written: " . dirname(MEEPO_PS_LOG_PATH);
+    if (!is_writable(dirname(MEEPO_PS_LOG_PATH_PREFIX))) {
+        $fatalErrorList[] = "Fatal error: Log file path not to be written: " . dirname(MEEPO_PS_LOG_PATH_PREFIX);
     }
 }
 

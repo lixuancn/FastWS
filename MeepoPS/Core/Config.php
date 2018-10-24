@@ -27,7 +27,7 @@ define('MEEPO_PS_KILL_INSTANCE_TIME_INTERVAL', $meepopsConfig['system']['stop_mu
 define('MEEPO_PS_IMPLICIT_FLUSH', $meepopsConfig['system']['implicit_flush']);
 
 //Log路径
-define('MEEPO_PS_LOG_PATH', $meepopsConfig['file']['log_filename_prefix'] . date('Y-m-d') . '.log');
+define('MEEPO_PS_LOG_PATH_PREFIX', $meepopsConfig['file']['log_filename_prefix']);
 
 //标准输出路径
 define('MEEPO_PS_STDOUT_PATH', $meepopsConfig['file']['stdout_path_prefix'] . date('Y-m-d') . '.stdout');
