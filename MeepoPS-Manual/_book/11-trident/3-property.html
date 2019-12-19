@@ -1,0 +1,1399 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Trident特有属性 · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4-usage-local.html" />
+    
+    
+    <link rel="prev" href="2-pic-text-summary.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    MeepoPS-PHP Socket服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    序
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../1-summary/1-introduction.html">
+            
+                <a href="../1-summary/1-introduction.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../1-summary/2-summary.html">
+            
+                <a href="../1-summary/2-summary.html">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../1-summary/3-statement.html">
+            
+                <a href="../1-summary/3-statement.html">
+            
+                    
+                    声明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../1-summary/4-planning.html">
+            
+                <a href="../1-summary/4-planning.html">
+            
+                    
+                    计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../1-summary/5-author.html">
+            
+                <a href="../1-summary/5-author.html">
+            
+                    
+                    作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../1-summary/6-donation.html">
+            
+                <a href="../1-summary/6-donation.html">
+            
+                    
+                    捐赠
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../1-summary/7-update-log.html">
+            
+                <a href="../1-summary/7-update-log.html">
+            
+                    
+                    更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    快速开始
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../2-quick-start/1-general-start.html">
+            
+                <a href="../2-quick-start/1-general-start.html">
+            
+                    
+                    普通模式启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../2-quick-start/2-daemon-start.html">
+            
+                <a href="../2-quick-start/2-daemon-start.html">
+            
+                    
+                    守护进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../2-quick-start/3-demo.html">
+            
+                <a href="../2-quick-start/3-demo.html">
+            
+                    
+                    DEMO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../2-quick-start/4-client.html">
+            
+                <a href="../2-quick-start/4-client.html">
+            
+                    
+                    客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../2-quick-start/5-directory-structure.html">
+            
+                <a href="../2-quick-start/5-directory-structure.html">
+            
+                    
+                    目录结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../2-quick-start/6-how-use.html">
+            
+                <a href="../2-quick-start/6-how-use.html">
+            
+                    
+                    如何使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../2-quick-start/7-config-ini.html">
+            
+                <a href="../2-quick-start/7-config-ini.html">
+            
+                    
+                    配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../2-quick-start/8-multiprocess.html">
+            
+                <a href="../2-quick-start/8-multiprocess.html">
+            
+                    
+                    多进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    接口
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../3-api/1-summary.html">
+            
+                <a href="../3-api/1-summary.html">
+            
+                    
+                    接口简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../3-api/2-common-property-child-process-count.html">
+            
+                <a href="../3-api/2-common-property-child-process-count.html">
+            
+                    
+                    属性childProcessCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../3-api/3-common-property-instance-name.html">
+            
+                <a href="../3-api/3-common-property-instance-name.html">
+            
+                    
+                    属性instanceName
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../3-api/4-common-property-client-list.html">
+            
+                <a href="../3-api/4-common-property-client-list.html">
+            
+                    
+                    属性clientList
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../3-api/6-callback.html">
+            
+                <a href="../3-api/6-callback.html">
+            
+                    
+                    回调函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../3-api/7-callback-start-instance.html">
+            
+                <a href="../3-api/7-callback-start-instance.html">
+            
+                    
+                    回调函数callbackStartInstance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../3-api/8-callback-connect.html">
+            
+                <a href="../3-api/8-callback-connect.html">
+            
+                    
+                    回调函数callbackConnect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../3-api/9-callback-new-data.html">
+            
+                <a href="../3-api/9-callback-new-data.html">
+            
+                    
+                    回调函数callbackNewData
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../3-api/10-callback-instance-stop.html">
+            
+                <a href="../3-api/10-callback-instance-stop.html">
+            
+                    
+                    回调函数callbackInstanceStop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../3-api/11-callback-connect-close.html">
+            
+                <a href="../3-api/11-callback-connect-close.html">
+            
+                    
+                    回调函数callbackConnectClose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../3-api/12-callback-error.html">
+            
+                <a href="../3-api/12-callback-error.html">
+            
+                    
+                    回调函数callbackError
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../3-api/13-callback-send-buffer-full.html">
+            
+                <a href="../3-api/13-callback-send-buffer-full.html">
+            
+                    
+                    回调函数callbackSendBufferFull
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../3-api/14-callback-send-buffer-empty.html">
+            
+                <a href="../3-api/14-callback-send-buffer-empty.html">
+            
+                    
+                    回调函数callbackSendBufferEmpty
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../3-api/101-telnet.html">
+            
+                <a href="../3-api/101-telnet.html">
+            
+                    
+                    接口Telnet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../3-api/102-http.html">
+            
+                <a href="../3-api/102-http.html">
+            
+                    
+                    接口HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../3-api/103-websocket.html">
+            
+                <a href="../3-api/103-websocket.html">
+            
+                    
+                    接口WebSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../3-api/104-trident.html">
+            
+                <a href="../3-api/104-trident.html">
+            
+                    
+                    接口Trident
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    链接
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../4-connect/1-summary.html">
+            
+                <a href="../4-connect/1-summary.html">
+            
+                    
+                    链接简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../4-connect/2-property-instance.html">
+            
+                <a href="../4-connect/2-property-instance.html">
+            
+                    
+                    属性instance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../4-connect/3-property-id.html">
+            
+                <a href="../4-connect/3-property-id.html">
+            
+                    
+                    属性id
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../4-connect/4-method-send.html">
+            
+                <a href="../4-connect/4-method-send.html">
+            
+                    
+                    方法send
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../4-connect/5-method-close.html">
+            
+                <a href="../4-connect/5-method-close.html">
+            
+                    
+                    方法close
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../4-connect/6-method-destroy.html">
+            
+                <a href="../4-connect/6-method-destroy.html">
+            
+                    
+                    方法destroy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../4-connect/7-method-pause-read.html">
+            
+                <a href="../4-connect/7-method-pause-read.html">
+            
+                    
+                    方法pauseRead
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../4-connect/8-method-resume-read.html">
+            
+                <a href="../4-connect/8-method-resume-read.html">
+            
+                    
+                    方法resumeRead
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../4-connect/9-method-is-pause-read.html">
+            
+                <a href="../4-connect/9-method-is-pause-read.html">
+            
+                    
+                    方法isPauseRead
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../4-connect/10-method-get-client-address.html">
+            
+                <a href="../4-connect/10-method-get-client-address.html">
+            
+                    
+                    方法getClientAddress
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    定时器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../5-timer/1-summary.html">
+            
+                <a href="../5-timer/1-summary.html">
+            
+                    
+                    定时器简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../5-timer/2-method-add.html">
+            
+                <a href="../5-timer/2-method-add.html">
+            
+                    
+                    方法add
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../5-timer/3-method-del-one.html">
+            
+                <a href="../5-timer/3-method-del-one.html">
+            
+                    
+                    方法delOne
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../5-timer/4-method-del-all.html">
+            
+                <a href="../5-timer/4-method-del-all.html">
+            
+                    
+                    方法delAll
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    协议
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-protocol/1-summary.html">
+            
+                <a href="../7-protocol/1-summary.html">
+            
+                    
+                    协议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-protocol/2-custom.html">
+            
+                <a href="../7-protocol/2-custom.html">
+            
+                    
+                    自定义协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-protocol/3-telnet.html">
+            
+                <a href="../7-protocol/3-telnet.html">
+            
+                    
+                    Telnet协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-protocol/4-http.html">
+            
+                <a href="../7-protocol/4-http.html">
+            
+                    
+                    HTTP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-protocol/5-websocket.html">
+            
+                <a href="../7-protocol/5-websocket.html">
+            
+                    
+                    WebSocket协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    高级分布式接口Trident
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="1-summary.html">
+            
+                <a href="1-summary.html">
+            
+                    
+                    Trident简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="2-pic-text-summary.html">
+            
+                <a href="2-pic-text-summary.html">
+            
+                    
+                    Trident内部流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.3" data-path="3-property.html">
+            
+                <a href="3-property.html">
+            
+                    
+                    Trident特有属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="4-usage-local.html">
+            
+                <a href="4-usage-local.html">
+            
+                    
+                    单机部署Trident
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="5-usage-distributed.html">
+            
+                <a href="5-usage-distributed.html">
+            
+                    
+                    集群部署Trident
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    测试
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../8-test/1-event-and-child-proccess.html">
+            
+                <a href="../8-test/1-event-and-child-proccess.html">
+            
+                    
+                    事件和子进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    建议
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../9-suggest/1-summary.html">
+            
+                <a href="../9-suggest/1-summary.html">
+            
+                    
+                    建议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../9-suggest/2-libevent-select.html">
+            
+                <a href="../9-suggest/2-libevent-select.html">
+            
+                    
+                    Libevent和Select
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../9-suggest/3-child-proccess.html">
+            
+                <a href="../9-suggest/3-child-proccess.html">
+            
+                    
+                    子进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../9-suggest/4-connect-num.html">
+            
+                <a href="../9-suggest/4-connect-num.html">
+            
+                    
+                    服务端链接数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../9-suggest/5-client-num.html">
+            
+                <a href="../9-suggest/5-client-num.html">
+            
+                    
+                    客户端数量
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    集成到其他框架
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../10-framework/1-summary.html">
+            
+                <a href="../10-framework/1-summary.html">
+            
+                    
+                    集成简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../10-framework/2-thinkphp.html">
+            
+                <a href="../10-framework/2-thinkphp.html">
+            
+                    
+                    ThinkPHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    示例
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Example/ChatRobot.html">
+            
+                <a href="../Example/ChatRobot.html">
+            
+                    
+                    基于WebSocket的智能客服
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Example/MonitorLogServer.html">
+            
+                <a href="../Example/MonitorLogServer.html">
+            
+                    
+                    基于Telnet的监控集群日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Example/MonitorServerStatus.html">
+            
+                <a href="../Example/MonitorServerStatus.html">
+            
+                    
+                    部署Agent的服务器数据抓取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Example/RealTimeMonitorSsh.html">
+            
+                <a href="../Example/RealTimeMonitorSsh.html">
+            
+                    
+                    基于WebSocket的实时监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Example/WebServer.html">
+            
+                <a href="../Example/WebServer.html">
+            
+                    
+                    基于HTTP的WebServer
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Trident特有属性</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="trident&#x63A5;&#x53E3;&#x7684;&#x5C5E;&#x6027;">Trident&#x63A5;&#x53E3;&#x7684;&#x5C5E;&#x6027;</h1><p>Trident&#x63A5;&#x6536;&#x4F20;&#x7EDF;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x7279;&#x6027;&#x5916;, &#x8FD8;&#x72EC;&#x6709;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x3002;</p><h3 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h3><pre><code class="lang-php"><span class="hljs-keyword">new</span> \MeepoPS\Api\Trident(<span class="hljs-string">&apos;telnet&apos;</span>, <span class="hljs-string">&apos;0.0.0.0&apos;</span>, <span class="hljs-string">&apos;19910&apos;</span>, <span class="hljs-keyword">array</span>(), <span class="hljs-string">&apos;&apos;</span>);</code></pre>
+<p>Trident&#x7C7B;&#x4E00;&#x5171;&#x6709;5&#x4E2A;&#x53C2;&#x6570;&#x3002;</p><ul><li>&#x53C2;&#x6570;&#x4E00;: &#x4F20;&#x7EDF;&#x63A5;&#x53E3;&#x7684;&#x540D;&#x79F0;, &#x5982;Telnet&#x3001;WebSocket&#x3001;Http&#x7B49;&#x3002;
+</li>
+<li>&#x53C2;&#x6570;&#x4E8C;: &#x53C2;&#x6570;&#x4E00;&#x7684;&#x63A5;&#x53E3;&#x76D1;&#x542C;&#x7684;IP
+</li>
+<li>&#x53C2;&#x6570;&#x4E09;: &#x53C2;&#x6570;&#x4E00;&#x7684;&#x63A5;&#x53E3;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;
+</li>
+<li>&#x53C2;&#x6570;&#x56DB;: stream_context_create()&#x51FD;&#x6570;&#x6240;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x7A7A;
+</li>
+<li>&#x53C2;&#x6570;&#x4E94;: &#x542F;&#x52A8;Trident&#x4E09;&#x5C42;&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x54EA;&#x4E00;&#x5C42;&#x3002;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x6709;confluence&#x3001;business&#x3001;transfer&#x4E09;&#x4E2A;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x7A7A;&#x3002;&#x4E3A;&#x7A7A;&#x65F6;&#x4E09;&#x5C42;&#x5168;&#x90E8;&#x542F;&#x52A8;&#x3002;
+</li></ul>
+<h3 id="confluence&#x5C42;&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027;">Confluence&#x5C42;&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027;</h3><ul><li>$confluenceIp: Confluence&#x5C42;&#x6240;&#x76D1;&#x542C;&#x7684;IP(0.0.0.0/127.0.0.1/&#x5185;&#x7F51;IP/&#x5916;&#x7F51;IP&#x53D6;&#x5176;&#x4E00;)
+</li>
+<li>$confluencePort: Confluence&#x5C42;&#x6240;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;
+</li>
+<li>$confluenceInnerIp: Confluence&#x5C42;&#x6240;&#x90E8;&#x7F72;&#x5728;&#x670D;&#x52A1;&#x5668;&#x540E;&#x76D1;&#x542C;&#x7684;IP(&#x5EFA;&#x8BAE;&#x586B;&#x5199;&#x5185;&#x7F51;IP)
+</li>
+<li>$confluenceName: &#x7ED9;Confluence&#x5C42;&#x7684;&#x8FDB;&#x7A0B;&#x8D77;&#x4E00;&#x4E2A;&#x597D;&#x542C;&#x7684;&#x540D;&#x5B57;
+</li></ul>
+<h3 id="transfer&#x5C42;&#x76F8;&#x5173;&#x5C5E;&#x6027;">Transfer&#x5C42;&#x76F8;&#x5173;&#x5C5E;&#x6027;</h3><ul><li>Transfer&#x5C42;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x7ED9;&#x4F20;&#x7EDF;&#x7684;&#x63A5;&#x53E3;&#x62AB;&#x4E86;&#x4E00;&#x5C42;&#x5916;&#x8863;&#x3002;
+</li>
+<li>&#x9664;&#x4E86;Trident&#x7279;&#x6709;&#x5C5E;&#x6027;&#x5916;, &#x5176;&#x4ED6;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x7684;&#x8D4B;&#x503C;/&#x8C03;&#x7528;&#x7B49;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5728;&#x64CD;&#x4F5C;&#x4F20;&#x7EDF;&#x7684;&#x63A5;&#x53E3;&#x3002;
+</li>
+<li>$transferInnerIp: Transfer&#x76D1;&#x542C;&#x7684;&#x5185;&#x7F51;IP, Business&#x4F1A;&#x94FE;&#x63A5;&#x5230;&#x8FD9;&#x91CC;&#x3002;
+</li>
+<li>$transferInnerPort: Transfer&#x76D1;&#x542C;&#x7684;&#x5185;&#x7F51;&#x7AEF;&#x53E3;, Business&#x4F1A;&#x94FE;&#x63A5;&#x5230;&#x8FD9;&#x91CC;&#x3002;
+</li>
+<li>$transferEncodeFunction: &#x51FD;&#x6570;&#x540D;, &#x53EF;&#x4E3A;&#x7A7A;&#x3002;Transfer&#x5728;&#x53D1;&#x9001;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x3002;&#x6B64;&#x64CD;&#x4F5C;&#x662F;&#x5728;&#x8C03;&#x7528;$connect-&gt;send()&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#x8FDB;&#x884C;&#x7684;&#x3002;&#x6709;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x80FD;&#x4F1A;&#x95EE;, &#x5728;&#x4F20;&#x7EDF;&#x63A5;&#x53E3;&#x4E2D;, $connect-&gt;send($data)&#x65F6;&#x4E0D;&#x662F;&#x4F1A;&#x81EA;&#x52A8;&#x6839;&#x636E;&#x63A5;&#x53E3;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x534F;&#x8BAE;&#x8F6C;&#x7801;&#x5417;, &#x5728;&#x8FD9;&#x91CC;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD8;&#x6709;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;&#x662F;&#x8FD9;&#x6837;&#x7684;, &#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x4F7F;&#x7528;WebSocket&#x63A5;&#x53E3;&#x505A;&#x4E86;&#x804A;&#x5929;&#x5E94;&#x7528;, &#x6570;&#x636E;&#x4F20;&#x8F93;&#x53C8;&#x4F7F;&#x7528;&#x7684;json&#x683C;&#x5F0F;, &#x90A3;&#x5728;&#x6BCF;&#x4E2A;&#x53D1;&#x6D88;&#x606F;&#x7684;&#x5730;&#x65B9;, &#x90FD;&#x9700;&#x8981;&#x5199;json_encode()&#x3002;
+</li></ul>
+<h3 id="business&#x5C42;&#x76F8;&#x5173;&#x5C5E;&#x6027;">Business&#x5C42;&#x76F8;&#x5173;&#x5C5E;&#x6027;</h3><ul><li>$businessChildProcessCount: Business&#x542F;&#x52A8;&#x591A;&#x5C11;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;
+</li>
+<li>$businessName: &#x7ED9;Business&#x5C42;&#x7684;&#x8FDB;&#x7A0B;&#x8D77;&#x4E00;&#x4E2A;&#x597D;&#x542C;&#x7684;&#x540D;&#x5B57;&#x3002;
+</li></ul>
+<h3 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h3><ul><li>$innerProtocol: Trident&#x5185;&#x90E8;&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;telnetjson&#x3002;telnetjson&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E8E;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x7684;&#x573A;&#x666F;, &#x56E0;&#x4E3A;json&#x662F;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x7684;&#x5E94;&#x7528;&#x6240;&#x91C7;&#x7528;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;, telnetjson&#x5C31;&#x4E0D;&#x9002;&#x7528;&#x4E86;, &#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x5728;json_encode&#x4E4B;&#x540E;&#x662F;&#x7A7A;&#x3002;
+</li></ul>
+<h3 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h3><pre><code class="lang-php"><span class="hljs-comment">//----------&#x5F15;&#x5165;MeepoPS----------</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">&apos;MeepoPS/index.php&apos;</span>;
+
+<span class="hljs-comment">//&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x4E09;&#x5C42;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x7684;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x7684;Api&#x7C7B;&#x3002;</span>
+$trident = <span class="hljs-keyword">new</span> \MeepoPS\Api\Trident(<span class="hljs-string">&apos;telnet&apos;</span>, <span class="hljs-string">&apos;0.0.0.0&apos;</span>, <span class="hljs-string">&apos;19910&apos;</span>);
+
+<span class="hljs-comment">//&#x914D;&#x7F6E;Confluence&#x5C42;</span>
+$trident-&gt;confluenceIp = <span class="hljs-string">&apos;0.0.0.0&apos;</span>;
+$trident-&gt;confluencePort = <span class="hljs-string">&apos;19911&apos;</span>;
+$trident-&gt;confluenceInnerIp = <span class="hljs-string">&apos;127.0.0.1&apos;</span>;
+
+<span class="hljs-comment">//&#x914D;&#x7F6E;Transfer&#x5C42;</span>
+$trident-&gt;transferInnerIp = <span class="hljs-string">&apos;0.0.0.0&apos;</span>;
+$trident-&gt;transferInnerPort = <span class="hljs-string">&apos;19912&apos;</span>;
+$trident-&gt;transferChildProcessCount = <span class="hljs-number">3</span>;
+
+<span class="hljs-comment">//&#x914D;&#x7F6E;Business&#x5C42;</span>
+$trident-&gt;businessChildProcessCount = <span class="hljs-number">3</span>;
+
+<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x6536;&#x5230;&#x65B0;&#x6D88;&#x606F;&#x540E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;&#x4E1A;&#x52A1;&#x903B;&#x8F91;, &#x81EA;&#x884C;&#x7F16;&#x5199;&#x5373;&#x53EF;</span>
+$trident-&gt;callbackNewData = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($connect, $data)</span></span>{
+     var_dump(<span class="hljs-string">&apos;&#x6536;&#x5230;&#x6D88;&#x606F;&apos;</span>.$data);
+};
+
+<span class="hljs-comment">//&#x542F;&#x52A8;&#x4E09;&#x5C42;&#x6A21;&#x578B;</span>
+$trident-&gt;run();
+
+<span class="hljs-comment">//&#x542F;&#x52A8;MeepoPS</span>
+\MeepoPS\runMeepoPS();</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2-pic-text-summary.html" class="navigation navigation-prev " aria-label="Previous page: Trident内部流程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4-usage-local.html" class="navigation navigation-next " aria-label="Next page: 单机部署Trident">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Trident特有属性","level":"1.8.3","depth":2,"next":{"title":"单机部署Trident","level":"1.8.4","depth":2,"path":"11-trident/4-usage-local.md","ref":"11-trident/4-usage-local.md","articles":[]},"previous":{"title":"Trident内部流程","level":"1.8.2","depth":2,"path":"11-trident/2-pic-text-summary.md","ref":"11-trident/2-pic-text-summary.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"11-trident/3-property.md","mtime":"2016-10-10T09:26:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2019-12-19T09:12:50.707Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
