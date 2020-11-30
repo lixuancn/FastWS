@@ -21,13 +21,17 @@ require 'Autoload.php';
 require 'Constant.php';
 
 //定义版本号
-define('MEEPO_PS_VERSION', '0.0.5');
+define('MEEPO_PS_VERSION', '0.0.6.dev');
+
+//定义变量
+$_SERVER['runtime_environment'] = 'meepops';
 
 //错误报告是否开启
 if (MEEPO_PS_DEBUG) {
     error_reporting(E_ALL);
 } else {
-    error_reporting(0);
+    //error_reporting(0);
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 
 //开启立即刷新输出

@@ -11,24 +11,16 @@ namespace MeepoPS\Core;
 
 class Log
 {
-    private static $fileResource = null;
-
-    private static function getInstance()
-    {
-        if (is_null(self::$fileResource)) {
-            self::$fileResource = fopen(MEEPO_PS_LOG_PATH, 'a');
-        }
-    }
-
     public static function write($msg, $type = 'INFO')
     {
-        self::getInstance();
+        $filename = MEEPO_PS_LOG_PATH_PREFIX . date('Ymd') . '.log';
         $type = strtoupper($type);
         if (!in_array($type, array('INFO', 'ERROR', 'FATAL', 'WARNING', "TEST"))) {
-            exit('Log type no match');
+            echo "Log type no match {$msg} {$type}\n";
+            return;
         }
         $msg = '[' . $type . '][' . date('Y-m-d H:i:s') . '][' . getmypid() . ']' . $msg . "\n";
-        fwrite(self::$fileResource, $msg);
+        file_put_contents($filename, $msg, FILE_APPEND);
         if (MEEPO_PS_DEBUG) {
             echo $msg;
         }

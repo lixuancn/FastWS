@@ -29,8 +29,6 @@ class Tcp extends TransportProtocolInterface
 
     //应用层协议
     protected $_applicationProtocolClassName;
-    //属于哪个实例
-    public $instance;
     //链接ID
     public $id = 0;
     //记录
@@ -59,6 +57,7 @@ class Tcp extends TransportProtocolInterface
      */
     public function __construct($socket, $clientAddress, $applicationProtocolClassname = '')
     {
+        global $meepopsRunningParam;
         //更改统计信息
         self::$statistics['total_connect_count']++;
         self::$statistics['current_connect_count']++;
@@ -81,7 +80,7 @@ class Tcp extends TransportProtocolInterface
 
         stream_set_blocking($this->_connect, 0);
         //监听此链接
-        MeepoPS::$globalEvent->add(array($this, 'read'), array(), $this->_connect, EventInterface::EVENT_TYPE_READ);
+        $meepopsRunningParam['globalEvent']->add(array($this, 'read'), array(), $this->_connect, EventInterface::EVENT_TYPE_READ);
     }
 
     /**
@@ -109,7 +108,7 @@ class Tcp extends TransportProtocolInterface
             return;
         }
         //处理应用层协议
-        $this->_applicationProtocolClassName ? $this->_readByApplicationProtocol() : $this->_readNoApplicationProtocol();
+        $this->_readByApplicationProtocol();
     }
 
     /**
@@ -155,37 +154,16 @@ class Tcp extends TransportProtocolInterface
                 $this->_readData = substr($this->_readData, $this->_currentPackageSize);
             }
             $this->_currentPackageSize = 0;
-            if (!empty($this->instance->callbackNewData)) {
+            global $meepopsRunningParam;
+            if(function_exists('callbackNewData')){
                 try {
-                    call_user_func_array($this->instance->callbackNewData, array($this, $applicationProtocolClassName::decode($requestBuffer, $this)));
+                    call_user_func_array('callbackNewData', array($this, $applicationProtocolClassName::decode($requestBuffer, $this)));
                 } catch (\Exception $e) {
                     self::$statistics['exception_count']++;
-                    Log::write('MeepoPS: execution callback function callbackNewData-' . json_encode($this->instance->callbackNewData) . ' throw exception' . json_encode($e), 'ERROR');
+                    Log::write('MeepoPS: execution callback function callbackNewData' . ' throw exception' . json_encode($e), 'ERROR');
                 }
             }
         }
-    }
-
-    /**
-     * 读取数据包. 如果没有应用层协议
-     */
-    private function _readNoApplicationProtocol()
-    {
-        //如果读取到的数据是空,或者链接已经被暂停
-        if ($this->_readData === '' || $this->_isPauseRead === true) {
-            return;
-        }
-        self::$statistics['total_read_package_count']++;
-        //触发接收到新数据的回调函数
-        if (!empty($this->instance->callbackNewData)) {
-            try {
-                call_user_func_array($this->instance->callbackNewData, array($this, $this->_readData));
-            } catch (\Exception $e) {
-                self::$statistics['exception_count']++;
-                Log::write('MeepoPS: execution callback function callbackNewData-' . json_encode($this->instance->callbackNewData) . ' throw exception' . json_encode($e), 'ERROR');
-            }
-        }
-        $this->_readData = '';
     }
 
     /**
@@ -196,6 +174,7 @@ class Tcp extends TransportProtocolInterface
      */
     public function send($data, $isEncode = true)
     {
+        global $meepopsRunningParam;
         //如果需要根据协议转码, 并且应用层协议类存在
         if ($isEncode === true && $this->_applicationProtocolClassName) {
             $applicationProtocolClassname = $this->_applicationProtocolClassName;
@@ -227,7 +206,7 @@ class Tcp extends TransportProtocolInterface
         } else if ($length > 0 && $length !== strlen($data)) {
             $this->_sendBuffer = substr($data, $length);
             //因为没有全部发送成功,则将发送事件加入到事件监听列表中
-            MeepoPS::$globalEvent->add(array($this, 'sendEvent'), array(), $this->_connect, EventInterface::EVENT_TYPE_WRITE);
+            $meepopsRunningParam['globalEvent']->add(array($this, 'sendEvent'), array(), $this->_connect, EventInterface::EVENT_TYPE_WRITE);
             //检测队列是否为空
             $this->_sendBufferIsFull();
             return $length;
@@ -243,6 +222,7 @@ class Tcp extends TransportProtocolInterface
      */
     public function sendEvent()
     {
+        global $meepopsRunningParam;
         //给socket资源中写入数据
         $length = $this->_sendAction($this->_connect, $this->_sendBuffer);
         //写入失败
@@ -252,17 +232,8 @@ class Tcp extends TransportProtocolInterface
         //全部发送成功
         if ($length === strlen($this->_sendBuffer)) {
             //全部发送成功后不再轮询这个事件
-            MeepoPS::$globalEvent->delOne($this->_connect, EventInterface::EVENT_TYPE_WRITE);
+            $meepopsRunningParam['globalEvent']->delOne($this->_connect, EventInterface::EVENT_TYPE_WRITE);
             $this->_sendBuffer = '';
-            //触发待发送缓冲区为空的队列
-            if (!empty($this->instance->callbackSendBufferEmpty)) {
-                try {
-                    call_user_func($this->instance->callbackSendBufferEmpty, $this);
-                } catch (\Exception $e) {
-                    self::$statistics['exception_count']++;
-                    Log::write('MeepoPS: execution callback function callbackSendBufferEmpty-' . json_encode($this->instance->callbackSendBufferEmpty) . ' throw exception' . json_encode($e), 'ERROR');
-                }
-            }
             //如果是正在关闭中的状态(平滑断开链接会发送完待发送缓冲区的所有数据后再销毁资源)
             if ($this->_currentStatus === self::CONNECT_STATUS_CLOSING) {
                 $this->destroy();
@@ -286,15 +257,6 @@ class Tcp extends TransportProtocolInterface
         if (!is_int($length) || intval($length) <= 0) {
             Log::write('Write data failed. Possible socket resource has disabled or network problems', 'WARNING');
             self::$statistics['total_send_failed_count']++;
-            //触发错误的回调函数
-            if (!empty($this->instance->callbackError)) {
-                try {
-                    call_user_func_array($this->instance->callbackError, array($this, MEEPO_PS_ERROR_CODE_SEND_SOCKET_INVALID, 'Send data failed. Possible socket resource has disabled'));
-                } catch (\Exception $e) {
-                    self::$statistics['exception_count']++;
-                    Log::write('MeepoPS: execution callback function callbackError-' . json_encode($this->instance->callbackError) . ' throw exception' . json_encode($e), 'ERROR');
-                }
-            }
             //强制销毁
             $this->destroy();
         }
@@ -325,32 +287,19 @@ class Tcp extends TransportProtocolInterface
      */
     public function destroy()
     {
+        global $meepopsRunningParam;
         //如果当前状态是已经关闭的,则不处理
         if ($this->_currentStatus === self::CONNECT_STATUS_CLOSED) {
             return;
         }
         //从事件中移除对链接的读写监听
-        MeepoPS::$globalEvent->delOne($this->_connect, EventInterface::EVENT_TYPE_READ);
-        MeepoPS::$globalEvent->delOne($this->_connect, EventInterface::EVENT_TYPE_WRITE);
+        $meepopsRunningParam['globalEvent']->delOne($this->_connect, EventInterface::EVENT_TYPE_READ);
+        $meepopsRunningParam['globalEvent']->delOne($this->_connect, EventInterface::EVENT_TYPE_WRITE);
         @fclose($this->_connect);
-        //从实例的客户端列表中移除
-        if(!empty($this->instance->clientList)){
-            unset($this->instance->clientList[$this->id]);
-        }
         //变更状态为已经关闭
         $this->_currentStatus = self::CONNECT_STATUS_CLOSED;
         //变更统计信息
         self::$statistics['current_connect_count']--;
-        //执行链接断开时的回调函数
-        if (!empty($this->instance->callbackConnectClose)) {
-            try {
-                call_user_func($this->instance->callbackConnectClose, $this);
-            } catch (\Exception $e) {
-                self::$statistics['exception_count']++;
-                Log::write('MeepoPS: execution callback function callbackConnectClose-' . json_encode($this->instance->callbackConnectClose) . ' throw exception' . json_encode($e), 'ERROR');
-            }
-        }
-        unset($this);
     }
 
     /**
@@ -358,7 +307,8 @@ class Tcp extends TransportProtocolInterface
      */
     public function pauseRead()
     {
-        MeepoPS::$globalEvent->delOne($this->_connect, EventInterface::EVENT_TYPE_READ);
+        global $meepopsRunningParam;
+        $meepopsRunningParam['globalEvent']->delOne($this->_connect, EventInterface::EVENT_TYPE_READ);
         $this->_isPauseRead = true;
     }
 
@@ -367,10 +317,11 @@ class Tcp extends TransportProtocolInterface
      */
     public function resumeRead()
     {
+        global $meepopsRunningParam;
         if ($this->_isPauseRead !== true) {
             return;
         }
-        MeepoPS::$globalEvent->add(array($this, 'read'), array(), $this->_connect, EventInterface::EVENT_TYPE_READ);
+        $meepopsRunningParam['globalEvent']->add(array($this, 'read'), array(), $this->_connect, EventInterface::EVENT_TYPE_READ);
         $this->_isPauseRead = false;
         $this->read($this->_connect);
     }
@@ -425,17 +376,16 @@ class Tcp extends TransportProtocolInterface
     {
         if (strlen($this->_sendBuffer) >= MEEPO_PS_TCP_CONNECT_SEND_MAX_BUFFER_SIZE) {
             Log::write('Send data failed. The send buffer is full. Data is discarded', 'WARNING');
-            if ($this->instance->callbackSendBufferFull) {
-                try {
-                    call_user_func($this->instance->callbackSendBufferFull, $this);
-                } catch (\Exception $e) {
-                    self::$statistics['exception_count']++;
-                    Log::write('MeepoPS: execution callback function callbackSendBufferFull-' . json_encode($this->instance->callbackSendBufferFull) . ' throw exception' . json_encode($e), 'ERROR');
-                }
-                return true;
-            }
         }
 
         return false;
+    }
+
+    public function getStatisticsTotalSendCount(){
+        return self::$statistics['total_send_count'];
+    }
+
+    public function getStatisticsTotalReadPackageCount(){
+        return self::$statistics['total_read_package_count'];
     }
 }

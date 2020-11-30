@@ -9,8 +9,7 @@
  * WebSite: http://www.lanecn.com
  */
 namespace MeepoPS\Core;
-class Func
-{
+class Func{
     /**
      * @descrpition 数组的KEY变更为项中的ID
      * @param $arr
@@ -27,10 +26,14 @@ class Func
 
     public static function setProcessTitle($title)
     {
-        if (function_exists('cli_set_process_title')) {
-            @cli_set_process_title($title);
-        } elseif (extension_loaded('proctitle') && function_exists('setproctitle')) {
-            @setproctitle($title);
+        //mac下cli_set_process_title()有bug。所以就放到try里了。
+        try{
+            if (function_exists('cli_set_process_title')) {
+                @cli_set_process_title($title);
+            } elseif (extension_loaded('proctitle') && function_exists('setproctitle')) {
+                @setproctitle($title);
+            }
+        }catch (\Exception $e){
         }
     }
 
@@ -38,5 +41,16 @@ class Func
     {
         $userInfo = posix_getpwuid(posix_getuid());
         return $userInfo['name'];
+    }
+
+    /**
+     * 当前运行环境是不是MeepoPS
+     */
+    public static function isMeepoPSRuntimeEvironment(){
+        if(isset($_SERVER['runtime_environment']) && $_SERVER['runtime_environment'] === 'meepops'){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
