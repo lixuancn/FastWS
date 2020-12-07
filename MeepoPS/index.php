@@ -1,4 +1,6 @@
 <?php
+namespace MeepoPS;
+
 global $meepopsRunningParam;
 $meepopsRunningParam = array(
     'listenIp' => '0.0.0.0',
