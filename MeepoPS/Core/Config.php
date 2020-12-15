@@ -27,7 +27,7 @@ define('MEEPO_PS_KILL_INSTANCE_TIME_INTERVAL', $config['system']['stop_multi_ins
 define('MEEPO_PS_IMPLICIT_FLUSH', $config['system']['implicit_flush']);
 
 //Log路径
-define('MEEPO_PS_LOG_PATH', $config['file']['log_filename_prefix'] . date('Y-m-d') . '.log');
+define('MEEPO_PS_LOG_PATH_PREFIX', $config['file']['log_filename_prefix']);
 
 //标准输出路径
 define('MEEPO_PS_STDOUT_PATH', $config['file']['stdout_path_prefix'] . date('Y-m-d') . '.stdout');

@@ -31,14 +31,14 @@
     1. 启动: 命令行输入"php demo-telnet.php start".
     2. 状态: 命令行输入"php demo-telnet.php status".
     3. 平滑结束: 启动后按下"ctrl + c"即可.
-    4. 强行结束: 命令行输入"kill -INT `cat /var/run/meepo_ps/meepo_ps_master.pid`".
+    4. 强行结束: 命令行输入"kill -INT `cat /var/run/meepops/meepops_master.pid`".
 
 ###### 守护进程模式启动:
     1. 启动: 命令行输入"php demo-telnet.php start -d".
     2. 状态: 命令行输入"php demo-telnet.php status".
     3. 平滑结束: 命令行输入"php demo-telnet.php stop".
     4. 强行结束: 命令行输入"php demo-telnet.php kill".
-    5. 强行结束: 命令行输入"kill -INT `cat /var/run/meepo_ps/meepo_ps_master.pid`".
+    5. 强行结束: 命令行输入"kill -INT `cat /var/run/meepops/meepops_master.pid`".
 
 ###### DEMO:
     1. 基于Telnet协议的服务端使用方法请参考demo-telnet.php.

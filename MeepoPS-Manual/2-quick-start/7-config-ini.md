@@ -25,16 +25,16 @@ implicit_flush = true
 ; ---------文件相关的设置------------------
 [file]
 ; 日志文件路径. Debug模式下不但会写日志, 而且会直接打印到标准输出(默认是显示器)
-log_filename_prefix = '/var/log/meepo_ps/meepo_ps_'
+log_filename_prefix = '/var/log/meepops/meepops_'
 
 ; 标准输出文件路径. Debug模式下的标准输出就是显示器.
-stdout_path_prefix = '/var/log/meepo_ps/meepo_ps_'
+stdout_path_prefix = '/var/log/meepops/meepops_'
 
 ; 主进程的Pid文件存放路径
-master_pid_path = '/var/run/meepo_ps/meepo_ps_master.pid'
+master_pid_path = '/var/run/meepops/meepops_master.pid'
 
 ; MeepoPS对子进程的统计信息收集存放的文件(该文件是一次性的)
-statistics_path = '/var/run/meepo_ps/meepo_ps_statistics'
+statistics_path = '/var/run/meepops/meepops_statistics'
 
 ; ---------链接相关设置------------------
 [connection]
