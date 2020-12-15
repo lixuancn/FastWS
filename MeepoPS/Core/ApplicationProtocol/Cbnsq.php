@@ -12,7 +12,7 @@ namespace MeepoPS\Core\ApplicationProtocol;
 
 use MeepoPS\Core\TransportProtocol\TransportProtocolInterface;
 
-class CBNSQ implements ApplicationProtocolInterface
+class Cbnsq implements ApplicationProtocolInterface
 {
 
     //基础头长: 8为正文长度

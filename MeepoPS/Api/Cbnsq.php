@@ -12,7 +12,7 @@ namespace MeepoPS\Api;
 
 use MeepoPS\Core\MeepoPS;
 
-class CBNSQ extends MeepoPS
+class Cbnsq extends MeepoPS
 {
 
     /**
@@ -25,7 +25,7 @@ class CBNSQ extends MeepoPS
         if (!$host || !$port) {
             return;
         }
-        parent::__construct('CBNSQ', $host, $port, $contextOptionList);
+        parent::__construct('cbnsq', $host, $port, $contextOptionList);
     }
 
     /**
