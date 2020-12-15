@@ -29,7 +29,8 @@ class Session{
             return session_start();
         }
         //Session路径
-        $this->_savePath = !empty(session_save_path()) ? session_save_path() : sys_get_temp_dir();
+        $sessionSavePath = session_save_path();
+        $this->_savePath = !empty($sessionSavePath) ? $sessionSavePath : sys_get_temp_dir();
         if(strlen($this->_savePath) > 1 && $this->_savePath[strlen($this->_savePath)-1] === '/'){
             $this->_savePath = substr($this->_savePath, 0, -1);
         }

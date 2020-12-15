@@ -137,7 +137,6 @@ class Libevent implements EventInterface
 
     /**
      * 循环事件
-     * @return mixed
      */
     public function loop()
     {

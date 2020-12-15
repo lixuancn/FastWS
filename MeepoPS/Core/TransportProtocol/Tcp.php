@@ -437,4 +437,12 @@ class Tcp extends TransportProtocolInterface
 
         return false;
     }
+
+    public function getStatisticsTotalSendCount(){
+        return self::$statistics['total_send_count'];
+    }
+
+    public function getStatisticsTotalReadPackageCount(){
+        return self::$statistics['total_read_package_count'];
+    }
 }

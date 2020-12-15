@@ -10,7 +10,7 @@
 
 namespace MeepoPS\Core;
 
-class Autoload
+class SplAutoload
 {
 
     const NAMESPACE_PREFIX = 'MeepoPS\\';
@@ -41,4 +41,4 @@ class Autoload
     }
 }
 
-Autoload::register();
+SplAutoload::register();

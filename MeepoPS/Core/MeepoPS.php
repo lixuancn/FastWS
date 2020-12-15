@@ -181,7 +181,7 @@ class MeepoPS
         //添加统计数据
         self::$_statistics['start_time'] = date('Y-m-d H:i:s');
         //给主进程起个名字
-        Func::setProcessTitle('MeepoPS_Master_Process');
+        Func::setProcessTitle('meepops_master_process');
         //设置ID
         foreach (self::$_instanceList as $instanceId => $instance) {
             self::$_instancePidList[$instanceId] = array_fill(0, $instance->childProcessCount, 0);
@@ -354,7 +354,7 @@ class MeepoPS
             self::$_instancePidList = array();
             self::$_instanceList = array($instance->_instanceId => $instance);
             Timer::delAll();
-            Func::setProcessTitle('MeepoPS: instance process  ' . $instance->instanceName . ' ' . $instance->_getBind());
+            Func::setProcessTitle('meepops: instance process  ' . $instance->instanceName . ' ' . $instance->_getBind());
             $instance->id = $id;
             $instance->run();
             exit(250);
@@ -430,7 +430,7 @@ class MeepoPS
                 Log::write('MeepoPS normal exit');
                 return;
             }
-            Log::write('stream_socket_serverMeepoPS unexpectedly quits. last error: ' . json_encode($errno), 'ERROR');
+            Log::write('MeepoPS unexpectedly quits. last error: ' . json_encode($errno), 'ERROR');
         }
     }
 
@@ -617,13 +617,13 @@ class MeepoPS
             //如果是子进程
         } else {
             foreach (self::$_instanceList as $instance) {
-                $instance->_stop();
+                $instance->stop();
             }
             exit();
         }
     }
 
-    private function _stop()
+    public function stop()
     {
         //执行关闭实例的时候的回调
         if ($this->callbackInstanceStop) {
@@ -648,7 +648,7 @@ class MeepoPS
     {
         //接收一个链接
         $connect = @stream_socket_accept($socket, 0, $peerName);
-        //false可能是惊群问题.但是在较新(13年下半年开始)的Linux内核已经解决了此问题.
+        //false可能是惊群问题.但是在较新(13年下半年开始)的Linux(2.6)内核已经解决了此问题.
         if ($connect === false) {
             return;
         }

@@ -43,8 +43,14 @@ class Http extends MeepoPS
         //域名和目录
         $domainDocumentList = explode('|', MEEPO_PS_HTTP_DOMAIN_DOCUMENT_LIST);
         foreach($domainDocumentList as $domainDocument){
+            if(!$domainDocument){
+                continue;
+            }
             $domainDocument = explode('&', $domainDocument);
-            $this->_documentRoot[trim($domainDocument[0])] = trim($domainDocument[1]);
+            if(empty($domainDocument[0]) || empty($domainDocument[1])){
+                continue;
+            }
+            $this->_documentRoot[strtolower(trim($domainDocument[0]))] = trim($domainDocument[1]);
         }
         //默认页
         $this->_defaultIndexList = explode(',', MEEPO_PS_HTTP_DEFAULT_PAGE);
@@ -160,6 +166,19 @@ class Http extends MeepoPS
     {
         self::$_sessionInstance->destroy();
     }
+
+    /**
+     * 结束,程序不在向下执行。退出业务逻辑返回到MeepoPS
+     * 功能和普通Web开发的Exit一样
+     * 就像平时exit()后退出PHP,交接给Nginx继续执行。
+     * 可是在MeepoPS中, 不能使用exit()
+     * @return bool
+     */
+    public static function end($msg='')
+    {
+        echo $msg;
+        throw new \Exception('meepops_http_end');
+    }
     
     /**
      * 收到新消息的回调
@@ -184,7 +203,8 @@ class Http extends MeepoPS
             $this->_close($connect, $this->_getErrorPage(400, 'Bad Request'));
             return;
         }
-        $urlPath = $requestUri['path'];
+        $urlPath = !empty($requestUri['path']) ? $requestUri['path'] : '';
+        $_SERVER['HTTP_HOST'] = !empty($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : '';
         $urlPath = $urlPath[strlen($urlPath) - 1] === '/' ? substr($urlPath, 0, -1) : $urlPath;
         $documentRoot = isset($this->_documentRoot[$_SERVER['HTTP_HOST']]) ? $this->_documentRoot[$_SERVER['HTTP_HOST']] : current($this->_documentRoot);
         $filename = $documentRoot . $urlPath;
@@ -209,9 +229,15 @@ class Http extends MeepoPS
         }
         //文件是否有效
         if (!is_file($filename)) {
-            $this->setHeader("HTTP/1.1 404 Not Found");
-            $this->_close($connect, $this->_getErrorPage(404, 'File not found'));
-            return;
+            // 博客特殊处理 start
+            $_SERVER['REQUEST_URI'] = $urlPath;
+            $filename = $documentRoot . '/index.php';
+            if (!is_file($filename)) {
+            // 博客特殊处理 end
+                $this->setHeader("HTTP/1.1 404 Not Found");
+                $this->_close($connect, $this->_getErrorPage(404, 'File not found'));
+                return;
+            }
         }
         //文件是否可读
         if (!is_readable($filename)) {
@@ -236,7 +262,9 @@ class Http extends MeepoPS
             try{
                 include $realFilename;
             }catch (\Exception $e){
-                Log::write('Exception was introduced to the PHP file.', 'WARNING');
+                if ($e->getMessage() != 'meepops_http_end') {
+                    Log::write('Exception was introduced to the PHP file.', 'WARNING');
+                }
             }
             $content = ob_get_clean();
             $this->_close($connect, $content);
