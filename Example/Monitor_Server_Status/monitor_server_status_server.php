@@ -39,7 +39,7 @@ $mysql = null;
 function callbackStartInstance($instance)
 {
     global $mysql;
-    $mysql = new \MeepoPS\Library\Db\Mysql('127.0.0.1', 'root', '123456', 'meepo_ps');
+    $mysql = new \MeepoPS\Library\Db\Mysql('127.0.0.1', 'root', '123456', 'meepops');
 }
 
 function callbackNewData($connect, $data)

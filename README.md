@@ -3,7 +3,7 @@
 ###### MeepoPS可以轻松构建在线实时聊天, 即时游戏, 视频流媒体播放, RPC, 实时监控, 以及原本使用HTTP的接口/定时任务的场景中等.
 
 #### 综述:
-- 目前版本为V0.0.6.dev ( [查看改动日志](http://meepops.lanecn.com/_book/1-summary/7-update-log.html) ).
+- 目前版本为V1.0.0 ( [查看改动日志](http://meepops.lanecn.com/doc/main/1-summary/7-update-log.html) ).
 - PHP作为最好的语言, 不仅仅能依靠Nginx来开发Web应用, 同时,也可以构建高效稳定的即时通讯类Socket应用.
 - MeepoPS的最低运行要求是安装了PHP的PCNTL库.
 - MeepoPS的定位是一个插件. 不但可以独立运行, 也可以依附与ThinkPHP, CodeIgniter, YII等MVC框架中.
@@ -31,26 +31,19 @@
     1. 启动: 命令行输入"php demo-telnet.php start".
     2. 状态: 命令行输入"php demo-telnet.php status".
     3. 平滑结束: 启动后按下"ctrl + c"即可.
-    4. 强行结束: 命令行输入"kill -INT `cat /var/run/meepo_ps/meepo_ps_master.pid`".
+    4. 强行结束: 命令行输入"kill -INT `cat /var/run/meepops/meepops_master.pid`".
 
 ###### 守护进程模式启动:
     1. 启动: 命令行输入"php demo-telnet.php start -d".
     2. 状态: 命令行输入"php demo-telnet.php status".
     3. 平滑结束: 命令行输入"php demo-telnet.php stop".
     4. 强行结束: 命令行输入"php demo-telnet.php kill".
-    5. 强行结束: 命令行输入"kill -INT `cat /var/run/meepo_ps/meepo_ps_master.pid`".
+    5. 强行结束: 命令行输入"kill -INT `cat /var/run/meepops/meepops_master.pid`".
 
 ###### DEMO:
     1. 基于Telnet协议的服务端使用方法请参考demo-telnet.php.
     2. 如果服务端启动的是HOST是0.0.0.0, 那么客户端可以是外机,可以是本机.本机可以是127.0.0.1, 也可以是localhost.
     3. 如果服务端启动的是HOST是127.0.0.1/localhost, 那么客户端是不能外机,只能是本机.
-
-###### Docker:
-我们提供了Docker来快速部署。使用Docker可以快速部署MeepoPS, 我们的容器中已经安装好了MeepoPS、CentOS7、PHP5.6.24、Libevent2.0.20以及他们所需要的各项依赖。
-```
-docker pull xyzasd01/meepops-0.0.5-dev
-```
-MeepoPS部署在/usr/local/MeepoPS目录下
 
 ##### 客户端使用方法:
 
@@ -74,4 +67,4 @@ MeepoPS部署在/usr/local/MeepoPS目录下
 Example目录下是示例案例, 每一个目录是一个独立的项目. 会不断添加.
 
 #### 测试案例:
-[请看文档-测试一栏](Doc/zh/8-test)
+[请看文档-测试一栏](http://meepops.lanecn.com/doc/main/8-test/1-event-and-child-proccess.html)

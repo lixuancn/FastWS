@@ -137,7 +137,6 @@ class Libevent implements EventInterface
 
     /**
      * 循环事件
-     * @return mixed
      */
     public function loop()
     {
@@ -148,11 +147,9 @@ class Libevent implements EventInterface
     /**
      * 定时器的回调函数
      * Libevent会先回调本方法.本方法再回调使用方设置的回调函数
-     * @param mixed $_null1 无用参数,抛弃
-     * @param mixed $_null2 无用参数,抛弃
      * @param int $timerId 定时器ID
      */
-    public function timerCallback($_null1, $_null2, $timerId)
+    public function timerCallback($timerId)
     {
         if (isset($this->_eventList[self::EVENT_TYPE_TIMER][$timerId])) {
             $timer = $this->_eventList[self::EVENT_TYPE_TIMER][$timerId];

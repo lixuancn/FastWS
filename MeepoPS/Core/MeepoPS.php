@@ -309,8 +309,9 @@ class MeepoPS
      */
     private static function _installSignal()
     {
-        //SIGINT为停止MeepoPS的信号
+        //SIGINT/SIGTERM为停止MeepoPS的信号
         pcntl_signal(SIGINT, array('\MeepoPS\Core\MeepoPS', 'signalCallback'), false);
+        pcntl_signal(SIGTERM, array('\MeepoPS\Core\MeepoPS', 'signalCallback'), false);
         //SIGUSR1 为查看MeepoPS所有状态的信号
         pcntl_signal(SIGUSR1, array('\MeepoPS\Core\MeepoPS', 'signalCallback'), false);
         //SIGPIPE 信号会导致Linux下Socket进程终止.我们忽略他
@@ -409,9 +410,11 @@ class MeepoPS
     {
         //设置之前设置的信号处理方式为忽略信号.并且系统调用被打断时不可重启系统调用
         pcntl_signal(SIGINT, SIG_IGN, false);
+        pcntl_signal(SIGTERM, SIG_IGN, false);
         pcntl_signal(SIGUSR1, SIG_IGN, false);
         //安装新的信号的处理函数,采用事件轮询的方式
         self::$globalEvent->add(array('\MeepoPS\Core\MeepoPS', 'signalCallback'), array(), SIGINT, EventInterface::EVENT_TYPE_SIGNAL);
+        self::$globalEvent->add(array('\MeepoPS\Core\MeepoPS', 'signalCallback'), array(), SIGTERM, EventInterface::EVENT_TYPE_SIGNAL);
         self::$globalEvent->add(array('\MeepoPS\Core\MeepoPS', 'signalCallback'), array(), SIGUSR1, EventInterface::EVENT_TYPE_SIGNAL);
     }
 
@@ -439,6 +442,7 @@ class MeepoPS
     {
         switch ($signal) {
             case SIGINT:
+            case SIGTERM:
                 self::_stopAll();
                 break;
             case SIGUSR1:

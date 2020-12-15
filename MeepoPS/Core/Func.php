@@ -43,4 +43,15 @@ class Func
         $userInfo = posix_getpwuid(posix_getuid());
         return $userInfo['name'];
     }
+
+    /**
+     * 当前运行环境是不是MeepoPS
+     */
+    public static function isMeepoPSRuntimeEvironment(){
+        if(isset($_SERVER['runtime_environment']) && $_SERVER['runtime_environment'] === 'meepops'){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
