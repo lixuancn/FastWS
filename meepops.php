@@ -1,4 +1,8 @@
 <?php
+
+//子进程在执行任务之前，会require这个变量所指的路径
+$meepopsChildProcessIncludeFile ='';
+
 /**
  * 子进程启动时调用
  */
@@ -132,7 +136,5 @@ class NsqWorker{
     }
 }
 
-//子进程在执行任务之前，会require这个变量所指的路径
-//$meepopsChildProcessIncludeFile = __DIR__ . '/../common/common.inc.php';
 //引入MeepoPS核心文件
 require __DIR__ . '/MeepoPS/index.php';

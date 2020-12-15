@@ -6,7 +6,6 @@
 //引入ktvserver所需文件
 if(isset($meepopsChildProcessIncludeFile) && $meepopsChildProcessIncludeFile){
     require $meepopsChildProcessIncludeFile;
-    NsqService::includeVendor();
 }
 
 //运行子进程

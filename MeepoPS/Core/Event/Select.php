@@ -273,4 +273,3 @@ class Select implements EventInterface
         }
     }
 }
-

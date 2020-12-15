@@ -40,4 +40,3 @@ interface ApplicationProtocolInterface
      */
     public static function decode($data, TransportProtocolInterface $connect);
 }
-
