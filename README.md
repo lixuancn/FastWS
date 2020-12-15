@@ -3,7 +3,7 @@
 ###### MeepoPS可以轻松构建在线实时聊天, 即时游戏, 视频流媒体播放, RPC, 实时监控, 以及原本使用HTTP的接口/定时任务的场景中等.
 
 #### 综述:
-- 目前版本为V0.0.5 ( [查看改动日志](http://meepops.lanecn.com/_book/1-summary/7-update-log.html) ).
+- 目前版本为V1.0.0 ( [查看改动日志](http://meepops.lanecn.com/doc/main/1-summary/7-update-log.html) ).
 - PHP作为最好的语言, 不仅仅能依靠Nginx来开发Web应用, 同时,也可以构建高效稳定的即时通讯类Socket应用.
 - MeepoPS的最低运行要求是安装了PHP的PCNTL库.
 - MeepoPS的定位是一个插件. 不但可以独立运行, 也可以依附与ThinkPHP, CodeIgniter, YII等MVC框架中.
@@ -74,4 +74,4 @@ MeepoPS部署在/usr/local/MeepoPS目录下
 Example目录下是示例案例, 每一个目录是一个独立的项目. 会不断添加.
 
 #### 测试案例:
-[请看文档-测试一栏](Doc/zh/8-test)
+[请看文档-测试一栏](http://meepops.lanecn.com/doc/main/8-test/1-event-and-child-proccess.html)
