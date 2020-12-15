@@ -45,13 +45,6 @@
     2. 如果服务端启动的是HOST是0.0.0.0, 那么客户端可以是外机,可以是本机.本机可以是127.0.0.1, 也可以是localhost.
     3. 如果服务端启动的是HOST是127.0.0.1/localhost, 那么客户端是不能外机,只能是本机.
 
-###### Docker:
-我们提供了Docker来快速部署。使用Docker可以快速部署MeepoPS, 我们的容器中已经安装好了MeepoPS、CentOS7、PHP5.6.24、Libevent2.0.20以及他们所需要的各项依赖。
-```
-docker pull xyzasd01/meepops-0.0.5-dev
-```
-MeepoPS部署在/usr/local/MeepoPS目录下
-
 ##### 客户端使用方法:
 
 ###### Telnet:
