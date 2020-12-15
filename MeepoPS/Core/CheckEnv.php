@@ -42,6 +42,7 @@ global $argv;
 if (!isset($argv[1]) || !in_array($argv[1], array('start', 'stop', 'restart', 'status', 'kill'))) {
     $fatalErrorList[] = "Fatal error: MeepoPS needs to receive the execution of the operation.\nUsage: php index.php start|stop|restart|status|kill\n\"";
 }
+
 //日志路径是否已经配置
 if (!defined('MEEPO_PS_LOG_PATH_PREFIX')) {
     $fatalErrorList[] = "Fatal error: Log file path prefix is not defined. Please define MEEPO_PS_LOG_PATH_PREFIX in Config.php";

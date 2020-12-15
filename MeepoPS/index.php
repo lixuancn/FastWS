@@ -26,7 +26,7 @@ require MEEPO_PS_ROOT_PATH . '/Core/Init.php';
 //设置ID
 $meepopsRunningParam['pidList'] = array_fill(0, $meepopsRunningParam['childProcessCount'], 0);
 //初始化定时器
-\MeepoPS\Core\Timer::init(); 
+\MeepoPS\Core\Timer::init();
 
 //载入MeepoPS核心文件
 require MEEPO_PS_ROOT_PATH . '/Core/MeepoPS.php';

@@ -21,7 +21,7 @@ require 'Autoload.php';
 require 'Constant.php';
 
 //定义版本号
-define('MEEPO_PS_VERSION', '0.0.6.dev');
+define('MEEPO_PS_VERSION', '0.1.0');
 
 //定义变量
 $_SERVER['runtime_environment'] = 'meepops';
