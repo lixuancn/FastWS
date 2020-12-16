@@ -96,11 +96,15 @@ class Tcp extends TransportProtocolInterface
             self::$statistics['total_read_count']++;
             $buffer = fread($connect, self::READ_SIZE);
             $buffer === false ? self::$statistics['total_read_failed_count']++ : null;
-            if ($buffer === '' || $buffer === false || feof($connect) === true) {
+            //这里无法使用feof来判断是否break，因为mac下，第一次读，feof就返回true。导致无法继续向下运行
+            if ($buffer === '' || $buffer === false) {
                 break;
             }
             $isAlreadyReaded = true;
             $this->_readData .= $buffer;
+            if(feof($connect) === true){
+                break;
+            }
         }
         //检测连接是否关闭
         if ($isAlreadyReaded === false && $isDestroy) {
@@ -154,7 +158,6 @@ class Tcp extends TransportProtocolInterface
                 $this->_readData = substr($this->_readData, $this->_currentPackageSize);
             }
             $this->_currentPackageSize = 0;
-            global $meepopsRunningParam;
             if(function_exists('callbackNewData')){
                 try {
                     call_user_func_array('callbackNewData', array($this, $applicationProtocolClassName::decode($requestBuffer, $this)));
