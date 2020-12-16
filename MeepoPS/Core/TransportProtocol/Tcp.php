@@ -97,11 +97,14 @@ class Tcp extends TransportProtocolInterface
             self::$statistics['total_read_count']++;
             $buffer = fread($connect, self::READ_SIZE);
             $buffer === false ? self::$statistics['total_read_failed_count']++ : null;
-            if ($buffer === '' || $buffer === false || feof($connect) === true) {
+            if ($buffer === '' || $buffer === false) {
                 break;
             }
             $isAlreadyReaded = true;
             $this->_readData .= $buffer;
+            if(feof($connect) === true){
+                break;
+            }
         }
         //检测连接是否关闭
         if ($isAlreadyReaded === false && $isDestroy) {
