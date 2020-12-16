@@ -49,7 +49,7 @@ function callbackConnect($connect)
 //回调 - 收到新消息
 function callbackNewData($connect, $data)
 {
-    echo "收到新消息: {$data}\n";
+    echo "收到新消息, ID:{$_SERVER['MESSAGE_ID']} 内容: {$data}\n";
     $connect->send("200 ok");
 }
 

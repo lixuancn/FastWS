@@ -68,6 +68,7 @@ class Cbnsq implements ApplicationProtocolInterface
     public static function decode($data, TransportProtocolInterface $connect)
     {
         $data = substr($data, self::BASE_HEADER_LENGTH);
-        return $data;
+        $_SERVER['MESSAGE_ID'] = substr($data, 0, self::MESSAGE_ID_LENGTH);
+        return substr($data, self::MESSAGE_ID_LENGTH);
     }
 }
