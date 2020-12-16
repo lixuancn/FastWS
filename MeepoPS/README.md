@@ -1,4 +1,4 @@
-# MeepoPS-PHP
+# MeepoPS
 
 本目录是MeepoPS的文件目录.
 
